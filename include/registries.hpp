@@ -4,8 +4,7 @@
 
 namespace game {
 namespace tileregistry {
-static Tile* tiles[MAX_TILE_ID];
-
+game::Tile* getTile(int id);
 void registerTile(game::Tile* t);
 }
 }

@@ -1,13 +1,5 @@
 # Files
-CXXSources:=src/main.cpp\
-			src/GameClass.cpp\
-			src/Input.cpp\
-			src/TileRegistry.cpp\
-			src/world/Level.cpp\
-			src/world/Tile.cpp\
-			src/util/Timer.cpp\
-			src/graphics/Renderer.cpp\
-			src/graphics/Texture.cpp
+CXXSources:=$(shell find src/ -name *.cpp -type f)
 
 # Output
 CXXObjects:=$(patsubst src/%.cpp,build/%.o,$(CXXSources))

@@ -6,8 +6,8 @@ game::gfx::Renderer::Renderer() {
     this->mWindow = nullptr;
     this->mRenderer = nullptr;
     this->mTileset = nullptr;
-    this->fpsCap = true;
-    this->frame = 0;
+    this->mFpsCap = true;
+    this->mFrame = 0;
 }
 
 game::gfx::Renderer::~Renderer() {
@@ -102,7 +102,7 @@ void game::gfx::Renderer::renderCharacter(int c, int x, int y, int fg, int bg) {
 }
 
 void game::gfx::Renderer::pullEvents() {
-    this->fps.start();
+    this->mFps.start();
 
     while (SDL_PollEvent(&this->mSdlEvent)) {
         if (G) {
@@ -110,14 +110,14 @@ void game::gfx::Renderer::pullEvents() {
         }
     }
 
-    if (this->fpsCap == true && (fps.getTicks() < 1000 / 60)) {
-        SDL_Delay((1000 / 60) - fps.getTicks());
+    if (this->mFpsCap == true && (mFps.getTicks() < 1000 / 60)) {
+        SDL_Delay((1000 / 60) - mFps.getTicks());
     }
 }
 
 void game::gfx::Renderer::render() {
     this->renderInternal();
-    this->frame++;
+    this->mFrame++;
 }
 
 SDL_Renderer* game::gfx::Renderer::sdlRenderer() {

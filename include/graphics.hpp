@@ -52,10 +52,9 @@ private:
 
     game::gfx::Texture* mTileset;
 
-    // TODO: naming conv.
-    bool fpsCap;
-    int frame;
-    game::Timer fps;
+    bool mFpsCap;
+    int mFrame;
+    game::Timer mFps;
 
     void renderInternal();
 
