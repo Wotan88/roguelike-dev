@@ -1,6 +1,5 @@
 #include "graphics.hpp"
 #include "game.hpp"
-#include <iostream>
 
 game::gfx::Renderer::Renderer() {
     this->mWindow = nullptr;
@@ -23,35 +22,39 @@ game::gfx::Renderer::~Renderer() {
 }
 
 int game::gfx::Renderer::initialize() {
+    LOG(INFO)<< "Initializing SDL";
     // Initialize SDL
     if (SDL_Init(SDL_INIT_EVERYTHING)) {
-        std::cout << "SDL_Init failed" << std::endl;
-        std::cout << SDL_GetError() << std::endl;
+        LOG(ERROR)<< "SDL_Init failed";
+        LOG(ERROR) << SDL_GetError();
         // Failed, return 0
         return 0;
     }
 
+    LOG(INFO) << "Creating SDL window";
     // Create SDL window object
     // TODO: window title
     this->mWindow = SDL_CreateWindow("Window title", 100, 100, 800, 600,
             SDL_WINDOW_SHOWN);
 
     if (!this->mWindow) {
-        std::cout << "SDL_CreateWindow failed" << std::endl;
-        std::cout << SDL_GetError() << std::endl;
+        LOG(ERROR) << "SDL_CreateWindow failed";
+        LOG(ERROR) << SDL_GetError();
         return 0;
     }
 
+    LOG(INFO) << "Creating SDL renderer";
     // Create SDL renderer object
     this->mRenderer = SDL_CreateRenderer(this->mWindow, -1,
             SDL_RENDERER_SOFTWARE);
     if (!this->mRenderer) {
-        std::cout << "SDL_CreateRenderer failed" << std::endl;
-        std::cout << SDL_GetError() << std::endl;
+        LOG(ERROR) << "SDL_CreateRenderer failed";
+        LOG(ERROR) << SDL_GetError();
         return 0;
     }
 
     if (!loadResources()) {
+        LOG(ERROR) << "Failed to load game resources";
         return 0;
     }
 
@@ -59,6 +62,7 @@ int game::gfx::Renderer::initialize() {
 }
 
 int game::gfx::Renderer::loadResources() {
+    LOG(DEBUG) << "Resource load stub";
     return 1;
 }
 
