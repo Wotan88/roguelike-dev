@@ -1,3 +1,5 @@
+#include "stats.hpp"
+
 class Stats {
 public:
     // Setters and getters
