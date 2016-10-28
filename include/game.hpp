@@ -10,13 +10,13 @@ static GameClass* gameInstance;
 
 class GameClass {
 public:
-	GameClass();
-	virtual ~GameClass();
+    GameClass();
+    virtual ~GameClass();
 
-	void run();
+    void run();
 private:
-	void render();
-	void tick();
+    void render();
+    void tick();
 };
 }
 
