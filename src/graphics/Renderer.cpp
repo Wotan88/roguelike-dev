@@ -62,15 +62,17 @@ int game::gfx::Renderer::initialize() {
 }
 
 int game::gfx::Renderer::loadResources() {
-    LOG(DEBUG) << "Resource load stub";
+    LOG(DEBUG)<< "Resource load stub";
     return 1;
 }
 
 void game::gfx::Renderer::renderInternal() {
+    SDL_RenderClear(this->mRenderer);
 
+    SDL_RenderPresent(this->mRenderer);
 }
 
-void game::gfx::Renderer::render() {
+void game::gfx::Renderer::pullEvents() {
     this->fps.start();
 
     while (SDL_PollEvent(&this->mSdlEvent)) {
@@ -79,11 +81,12 @@ void game::gfx::Renderer::render() {
         }
     }
 
-    this->renderInternal();
-
-    this->frame++;
-
     if (this->fpsCap == true && (fps.getTicks() < 1000 / 60)) {
         SDL_Delay((1000 / 60) - fps.getTicks());
     }
+}
+
+void game::gfx::Renderer::render() {
+    this->renderInternal();
+    this->frame++;
 }

@@ -8,6 +8,7 @@ game::GameClass* game::getInstance() {
 
 game::GameClass::GameClass() {
     this->mRenderer = nullptr;
+    this->mInput = nullptr;
     this->mRunning = false;
 
     // TODO: throw an exception of GameClass instance already exists
@@ -23,10 +24,18 @@ void game::GameClass::run() {
     if (!this->mRenderer->initialize()) {
         return;
     }
+
+    // Input
+    this->mInput = new game::Input();
+
+    // Game is now running
     this->mRunning = true;
 
+    // First render
+    this->mRenderer->render();
+
     while (this->mRunning) {
-        this->mRenderer->render();
+        this->mRenderer->pullEvents();
     }
 
     LOG(INFO)<< "Quitting";
@@ -39,4 +48,11 @@ void game::GameClass::onSDLEvent(SDL_Event* e) {
         LOG(DEBUG)<< "SDL_QUIT event received";
         this->mRunning = false;
     }
+    if (e->type == SDL_KEYDOWN) {
+        this->mInput->keyDownEvent(e->key);
+    }
+}
+
+game::Input* game::GameClass::input() {
+    return this->mInput;
 }

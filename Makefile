@@ -1,6 +1,7 @@
 # Files
 CXXSources:=src/main.cpp\
 			src/GameClass.cpp\
+			src/Input.cpp\
 			src/TileRegistry.cpp\
 			src/world/Level.cpp\
 			src/world/Tile.cpp\

@@ -15,6 +15,7 @@ public:
     ~Renderer();
 
     int initialize();
+    void pullEvents();
     void render();
 private:
     SDL_Window* mWindow;
