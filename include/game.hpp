@@ -2,6 +2,7 @@
 #define INCLUDE_GAME_HPP_
 #include "graphics.hpp"
 #include <SDL2/SDL_events.h>
+#include "easylogging++.h"
 
 // GLOBAL 2DO SECTION:
 // TODO: logging?
