@@ -1,9 +1,12 @@
 # Files
-CXXSources:=src/main.cpp
+CXXSources:=src/main.cpp\
+			src/GameClass.cpp\
+			src/world/Level.cpp\
+			src/world/Tile.cpp
 
 # Output
 CXXObjects:=$(patsubst src/%.cpp,build/%.o,$(CXXSources))
-OutputDirs:=build/
+OutputDirs:=build/ build/world/
 
 # Compiler params
 CXX:=g++
