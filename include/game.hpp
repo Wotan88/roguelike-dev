@@ -9,6 +9,7 @@
 // TODO: logging?
 //
 #define G game::getInstance()
+#define GR game::getInstance()->renderer()
 
 namespace game {
 // Forward declaration

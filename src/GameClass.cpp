@@ -56,3 +56,7 @@ void game::GameClass::onSDLEvent(SDL_Event* e) {
 game::Input* game::GameClass::input() {
     return this->mInput;
 }
+
+game::gfx::Renderer* game::GameClass::renderer(){
+    return this->mRenderer;
+}
