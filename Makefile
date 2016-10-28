@@ -12,9 +12,10 @@ CXXObjects:=$(patsubst src/%.cpp,build/%.o,$(CXXSources))
 OutputDirs:=build/ build/world/ build/util build/graphics
 
 # Compiler params
-CXX:=g++
-LD:=g++
-CXX_FLAGS:=--pedantic -O2 -Wall -Iinclude/ -Ilib/include/ `sdl2-config --cflags`
+G++6X := $(shell command -v g++-6 2> /dev/null)
+CXX:=$(if $(G++6X),g++-6,g++)
+LD:=$(if $(G++6X),g++-6,g++)
+CXX_FLAGS:=-std=c++11 --pedantic -O2 -Wall -Iinclude/ -Ilib/include/ `sdl2-config --cflags`
 LD_FLAGS:=`sdl2-config --libs`
 
 
