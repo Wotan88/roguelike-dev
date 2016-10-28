@@ -14,21 +14,21 @@ OutputDirs:=build/ build/world/ build/util build/graphics
 # Compiler params
 CXX:=g++
 LD:=g++
-CXX_FLAGS:=--pedantic -O2 -Wall -Iinclude/ -Ilib/include/ `pkg-config --cflags sdl2` -std=c++0x
-LD_FLAGS:=`pkg-config --libs sdl2`
+CXX_FLAGS:=--pedantic -O2 -Wall -Iinclude/ `sdl2-config --cflags`
+LD_FLAGS:=`sdl2-config --libs`
 
 
 all: build/roguelike
 
 build/roguelike: makedirs tplibs $(CXXObjects)
-	$(LD) $(LD_FLAGS) -o $@ $(CXXObjects)
+	$(LD) -o $@ $(CXXObjects) $(LD_FLAGS)
 
 build/%.o: src/%.cpp
 	$(CXX) $(CXX_FLAGS) -c -o $@ $<
 
 makedirs:
 	@mkdir -p $(OutputDirs)
-
+	
 tplibs:
 	make -C lib/src/SDL2_Image/
 
