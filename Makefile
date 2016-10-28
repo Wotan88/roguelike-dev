@@ -14,7 +14,7 @@ OutputDirs:=build/ build/world/ build/util build/graphics
 # Compiler params
 CXX:=g++
 LD:=g++
-CXX_FLAGS:=--pedantic -O2 -Wall -Iinclude/ `sdl2-config --cflags`
+CXX_FLAGS:=--pedantic -O2 -Wall -Iinclude/ -Ilib/include/ `sdl2-config --cflags`
 LD_FLAGS:=`sdl2-config --libs`
 
 
