@@ -9,6 +9,10 @@ game::GameClass* game::getInstance() {
 game::GameClass::GameClass() {
     this->mRenderer = nullptr;
     this->mInput = nullptr;
+
+    this->mPlayer = nullptr;
+    this->mCurrentLevel = nullptr;
+
     this->mRunning = false;
 
     // TODO: throw an exception of GameClass instance already exists
@@ -16,6 +20,22 @@ game::GameClass::GameClass() {
 }
 
 game::GameClass::~GameClass() {
+    LOG(DEBUG)<< "GameClass instance destroyed";
+    delete this->mPlayer;
+    delete this->mRenderer;
+    delete this->mInput;
+    delete this->mCurrentLevel;
+}
+
+void game::GameClass::setup() {
+    // Input
+    this->mInput = new game::Input();
+
+    // Level
+    this->mCurrentLevel = new game::Level(80, 24);
+
+    // Player
+    this->mPlayer = new game::Player(this->mCurrentLevel);
 }
 
 void game::GameClass::run() {
@@ -25,8 +45,7 @@ void game::GameClass::run() {
         return;
     }
 
-    // Input
-    this->mInput = new game::Input();
+    this->setup();
 
     // Game is now running
     this->mRunning = true;
@@ -39,7 +58,7 @@ void game::GameClass::run() {
     }
 
     LOG(INFO)<< "Quitting";
-    delete this->mRenderer;
+
     SDL_Quit();
 }
 
@@ -57,6 +76,10 @@ game::Input* game::GameClass::input() {
     return this->mInput;
 }
 
-game::gfx::Renderer* game::GameClass::renderer(){
+game::gfx::Renderer* game::GameClass::renderer() {
     return this->mRenderer;
+}
+
+game::Player* game::GameClass::player() {
+    return this->mPlayer;
 }

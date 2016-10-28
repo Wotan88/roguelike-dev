@@ -35,3 +35,11 @@ int game::Level::set(int x, int y, int t) {
 
     return 1;
 }
+
+int game::Level::width(){
+    return this->mWidth;
+}
+
+int game::Level::height(){
+    return this->mHeight;
+}

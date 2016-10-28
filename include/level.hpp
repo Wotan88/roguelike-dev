@@ -1,6 +1,7 @@
 #ifndef INCLUDE_LEVEL_HPP_
 #define INCLUDE_LEVEL_HPP_
 #define MAX_TILE_ID 2048
+#include "easylogging++.h"
 #include <vector>
 
 namespace game {
@@ -15,6 +16,8 @@ public:
 
     // Getters
     int get(int x, int y);
+    int width();
+    int height();
 
     // Setters
     int set(int x, int y, int t);
@@ -48,13 +51,19 @@ private:
 // Abstract entity class
 class Entity {
 public:
-    Entity();
+    Entity(game::Level* l);
     virtual ~Entity();
 
     // Getters
     virtual int getIconIndex();
     virtual int getForegroundColor();
     virtual int getBackgroundColor();
+
+    void getPosition(int& x, int& y);
+    int x();
+    int y();
+
+    virtual int move(int x, int y);
 
     // Events
     virtual int onTurnFinished();
@@ -66,7 +75,7 @@ protected:
 // Player class
 class Player: public Entity {
 public:
-    Player();
+    Player(game::Level* l);
     virtual ~Player();
 
     // Getters

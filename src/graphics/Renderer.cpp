@@ -78,9 +78,19 @@ void game::gfx::Renderer::renderInternal() {
     SDL_SetRenderDrawColor(this->mRenderer, 0, 0, 0, 255);
     SDL_RenderClear(this->mRenderer);
 
-    this->renderCharacter('X', 0, 0, 0xFF0000, 0xFFFFFF);
+    // Render player
+    this->renderPlayer();
 
     SDL_RenderPresent(this->mRenderer);
+}
+
+void game::gfx::Renderer::renderPlayer() {
+    int px, py;
+    GP->getPosition(px, py);
+
+    int c = GP->getIconIndex();
+
+    this->renderCharacter(c, px, py, GP->getForegroundColor(), GP->getBackgroundColor());
 }
 
 void game::gfx::Renderer::renderCharacter(int c, int x, int y, int fg, int bg) {

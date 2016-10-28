@@ -1,7 +1,7 @@
 #include "level.hpp"
 
-game::Player::Player() :
-        Entity() {
+game::Player::Player(game::Level* l) :
+        Entity(l) {
 
 }
 
@@ -9,7 +9,7 @@ game::Player::~Player() {
 }
 
 int game::Player::getBackgroundColor() {
-    return 0;
+    return -1;
 }
 
 int game::Player::getForegroundColor() {

@@ -60,6 +60,8 @@ private:
     game::Timer mFps;
 
     void renderInternal();
+    void renderPlayer();
+    void renderLevel();
 
     void renderCharacter(int c, int x, int y, int fg, int bg);
 
