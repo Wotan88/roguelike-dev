@@ -62,7 +62,7 @@ int game::gfx::Renderer::loadResources() {
     return 1;
 }
 
-void game::gfx::Renderer::renderInternal(){
+void game::gfx::Renderer::renderInternal() {
 
 }
 
