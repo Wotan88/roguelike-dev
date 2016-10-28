@@ -87,8 +87,8 @@ void game::gfx::Renderer::renderCharacter(int c, int x, int y, int fg, int bg) {
     int tx = 0, ty = 0;
     tx = c % 16;
     ty = c / 16;
-    // TODO: define this in variable/constant
-    SDL_Rect r { tx * 8, ty * 12, 8, 12 };
+    SDL_Rect r { tx * TILESET_CHAR_WIDTH, ty * TILESET_CHAR_HEIGHT,
+    TILESET_CHAR_WIDTH, TILESET_CHAR_HEIGHT };
     SDL_Rect r2 { x * CHAR_WIDTH, y * CHAR_HEIGHT, CHAR_WIDTH, CHAR_HEIGHT };
     if (fg >= 0) {
         this->mTileset->setColorMask(fg);
