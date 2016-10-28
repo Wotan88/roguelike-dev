@@ -37,20 +37,20 @@ static struct {
 } supported[] = {
     /* keep magicless formats first */
     { "TGA", NULL,      IMG_LoadTGA_RW },
-    { "CUR", IMG_isCUR, IMG_LoadCUR_RW },
-    { "ICO", IMG_isICO, IMG_LoadICO_RW },
+//    { "CUR", IMG_isCUR, IMG_LoadCUR_RW },
+//    { "ICO", IMG_isICO, IMG_LoadICO_RW },
     { "BMP", IMG_isBMP, IMG_LoadBMP_RW },
-    { "GIF", IMG_isGIF, IMG_LoadGIF_RW },
-    { "JPG", IMG_isJPG, IMG_LoadJPG_RW },
-    { "LBM", IMG_isLBM, IMG_LoadLBM_RW },
-    { "PCX", IMG_isPCX, IMG_LoadPCX_RW },
+//    { "GIF", IMG_isGIF, IMG_LoadGIF_RW },
+//    { "JPG", IMG_isJPG, IMG_LoadJPG_RW },
+//    { "LBM", IMG_isLBM, IMG_LoadLBM_RW },
+//    { "PCX", IMG_isPCX, IMG_LoadPCX_RW },
     { "PNG", IMG_isPNG, IMG_LoadPNG_RW },
-    { "PNM", IMG_isPNM, IMG_LoadPNM_RW }, /* P[BGP]M share code */
-    { "TIF", IMG_isTIF, IMG_LoadTIF_RW },
-    { "XCF", IMG_isXCF, IMG_LoadXCF_RW },
-    { "XPM", IMG_isXPM, IMG_LoadXPM_RW },
-    { "XV",  IMG_isXV,  IMG_LoadXV_RW  },
-    { "WEBP", IMG_isWEBP, IMG_LoadWEBP_RW },
+//    { "PNM", IMG_isPNM, IMG_LoadPNM_RW }, /* P[BGP]M share code */
+//    { "TIF", IMG_isTIF, IMG_LoadTIF_RW },
+//    { "XCF", IMG_isXCF, IMG_LoadXCF_RW },
+//    { "XPM", IMG_isXPM, IMG_LoadXPM_RW },
+//    { "XV",  IMG_isXV,  IMG_LoadXV_RW  },
+//    { "WEBP", IMG_isWEBP, IMG_LoadWEBP_RW },
 };
 
 const SDL_version *IMG_Linked_Version(void)
@@ -60,15 +60,15 @@ const SDL_version *IMG_Linked_Version(void)
     return(&linked_version);
 }
 
-extern int IMG_InitJPG();
-extern void IMG_QuitJPG();
+//extern int IMG_InitJPG();
+//extern void IMG_QuitJPG();
 extern int IMG_InitPNG();
 extern void IMG_QuitPNG();
-extern int IMG_InitTIF();
-extern void IMG_QuitTIF();
+//extern int IMG_InitTIF();
+//extern void IMG_QuitTIF();
 
-extern int IMG_InitWEBP();
-extern void IMG_QuitWEBP();
+//extern int IMG_InitWEBP();
+//extern void IMG_QuitWEBP();
 
 static int initialized = 0;
 
@@ -81,26 +81,26 @@ int IMG_Init(int flags)
         return initialized;
     }
 
-    if (flags & IMG_INIT_JPG) {
-        if ((initialized & IMG_INIT_JPG) || IMG_InitJPG() == 0) {
-            result |= IMG_INIT_JPG;
-        }
-    }
+//    if (flags & IMG_INIT_JPG) {
+//        if ((initialized & IMG_INIT_JPG) || IMG_InitJPG() == 0) {
+//            result |= IMG_INIT_JPG;
+//        }
+//    }
     if (flags & IMG_INIT_PNG) {
         if ((initialized & IMG_INIT_PNG) || IMG_InitPNG() == 0) {
             result |= IMG_INIT_PNG;
         }
     }
-    if (flags & IMG_INIT_TIF) {
-        if ((initialized & IMG_INIT_TIF) || IMG_InitTIF() == 0) {
-            result |= IMG_INIT_TIF;
-        }
-    }
-    if (flags & IMG_INIT_WEBP) {
-        if ((initialized & IMG_INIT_WEBP) || IMG_InitWEBP() == 0) {
-            result |= IMG_INIT_WEBP;
-        }
-    }
+//    if (flags & IMG_INIT_TIF) {
+//        if ((initialized & IMG_INIT_TIF) || IMG_InitTIF() == 0) {
+//            result |= IMG_INIT_TIF;
+//        }
+//    }
+//    if (flags & IMG_INIT_WEBP) {
+//        if ((initialized & IMG_INIT_WEBP) || IMG_InitWEBP() == 0) {
+//            result |= IMG_INIT_WEBP;
+//        }
+//    }
     initialized |= result;
 
     return result;
@@ -108,18 +108,18 @@ int IMG_Init(int flags)
 
 void IMG_Quit()
 {
-    if (initialized & IMG_INIT_JPG) {
-        IMG_QuitJPG();
-    }
+//    if (initialized & IMG_INIT_JPG) {
+//        IMG_QuitJPG();
+//    }
     if (initialized & IMG_INIT_PNG) {
         IMG_QuitPNG();
     }
-    if (initialized & IMG_INIT_TIF) {
-        IMG_QuitTIF();
-    }
-    if (initialized & IMG_INIT_WEBP) {
-        IMG_QuitWEBP();
-    }
+//    if (initialized & IMG_INIT_TIF) {
+//        IMG_QuitTIF();
+//    }
+//    if (initialized & IMG_INIT_WEBP) {
+//        IMG_QuitWEBP();
+//    }
     initialized = 0;
 }
 

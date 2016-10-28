@@ -1,5 +1,6 @@
 #include "graphics.hpp"
 #include "game.hpp"
+#include "SDL_image.h"
 
 game::gfx::Renderer::Renderer() {
     this->mWindow = nullptr;
@@ -63,6 +64,9 @@ int game::gfx::Renderer::initialize() {
 
 int game::gfx::Renderer::loadResources() {
     LOG(DEBUG)<< "Resource load stub";
+
+    this->mTileset = IMG_Load("assets/font.png");
+
     return 1;
 }
 

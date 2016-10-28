@@ -12,6 +12,9 @@ CXXSources:=src/main.cpp\
 CXXObjects:=$(patsubst src/%.cpp,build/%.o,$(CXXSources))
 OutputDirs:=build/ build/world/ build/util build/graphics
 
+# Third-party
+ThirdPartyObjects:=lib/src/SDL2_Image/IMG.o lib/src/SDL2_Image/IMG_bmp.o lib/src/SDL2_Image/IMG_png.o lib/src/SDL2_Image/IMG_tga.o
+
 # Compiler params
 G++6X := $(shell command -v g++-6 2> /dev/null)
 CXX:=$(if $(G++6X),g++-6,g++)
@@ -23,7 +26,7 @@ LD_FLAGS:=`sdl2-config --libs`
 all: build/roguelike
 
 build/roguelike: makedirs tplibs $(CXXObjects)
-	$(LD) -o $@ $(CXXObjects) $(LD_FLAGS)
+	$(LD) -o $@ $(CXXObjects) $(LD_FLAGS) $(ThirdPartyObjects)
 
 build/%.o: src/%.cpp
 	$(CXX) $(CXX_FLAGS) -c -o $@ $<
