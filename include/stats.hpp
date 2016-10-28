@@ -1,9 +1,13 @@
+#ifndef INCLUDE_STATS_HPP_
+#define INCLUDE_STATS_HPP_
+
+namespace game {
 class Stats {
 public:
     // Setters and getters
     void setStrength(int strength);
     int getStrength();
-    void setConstitution;
+    void setConstitution(int constitution);
     int getConstitution();
     void setDexterity(int dexterity);
     int getDexterity();
@@ -58,3 +62,6 @@ private:
     int mExp = 0;
     int mLvl = 1;
 };
+}
+
+#endif
