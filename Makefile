@@ -28,9 +28,12 @@ build/%.o: src/%.cpp
 
 makedirs:
 	@mkdir -p $(OutputDirs)
-	
+
 tplibs:
 	make -C lib/src/SDL2_Image/
 
 run: build/roguelike
 	build/roguelike
+
+clean:
+	rm -rf build/

@@ -36,6 +36,7 @@ void game::GameClass::run() {
 
 void game::GameClass::onSDLEvent(SDL_Event* e) {
     if (e->type == SDL_QUIT) {
+        LOG(DEBUG)<< "SDL_QUIT event received";
         this->mRunning = false;
     }
 }
